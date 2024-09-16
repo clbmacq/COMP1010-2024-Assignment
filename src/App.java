@@ -1,7 +1,6 @@
 public class App {
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
-
-        System.out.println("mark Test21");
+        character Bob = new character("Bob", 10, 10, 10, 10);
+        Bob.getInfo();
     }
 }
