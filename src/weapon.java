@@ -8,5 +8,4 @@ public weapon(String name, int modifier){
 
 }
 
-    
 }
