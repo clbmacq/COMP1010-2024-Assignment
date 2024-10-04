@@ -1,12 +1,23 @@
-public class weapon {
-int wepmodifier;
-String wepname;
+// public class weapon {
 
-public weapon(String name, int modifier){
-    this.wepname = name;
-    this.wepmodifier = modifier;
+// int statModifier;
+// int equipName;
+// String type;
 
-}
 
-    
-}
+// public equipment(String name, int modifier){
+//     this.equipName = name;
+//     this.statModifier = modifier;
+
+// }
+
+// public equipment(String type, String name, int modifier){
+//     this.equipName = name;
+//     this.statModifier = modifier;
+// }
+
+
+
+
+// equipment heavyArmor = new equipment(armor, 10)
+// }
