@@ -4,7 +4,6 @@ public class character {
     int strength;
     int defense;
     int speed;
-    int intelligence;
     String team;
     int maxhp;
     weapon weapon;
@@ -19,7 +18,7 @@ public class character {
         this.defense = defense; // determines chance of being hit
         this.speed = speed; // determines initiative / move order
         this.team = team; // enemy or player team
-        this.weapon = weapon;
+        this.weapon = weapon; // equipped weapon
     }
 
     public void attack(character target) {
@@ -71,11 +70,11 @@ public class character {
     
     public void getInfo(){
         System.out.println(name + " information:");
-        System.out.println("+ Health: " + health);
-        System.out.println("+ Strength: " + strength);
-        System.out.println("+ Defense: " + defense);
-        System.out.println("+ Speed: " + speed);
-        System.out.println("+ Team: " + team);
+        System.out.println("Health: " + health);
+        System.out.println("Strength: " + strength);
+        System.out.println("Defense: " + defense);
+        System.out.println("Speed: " + speed);
+        System.out.println("Team: " + team);
         System.out.println("Weapon:" + weapon.wepname);
         
     }

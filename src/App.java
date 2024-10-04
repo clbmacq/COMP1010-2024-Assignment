@@ -18,7 +18,6 @@ public class App {
         character Mimo = new character("Mimo", 20, 20, 5, 13, 15, "Enemy",WepDagger);
         Mimo.getInfo();
 
-        
     }
 
 
