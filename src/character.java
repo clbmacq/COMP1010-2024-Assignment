@@ -27,10 +27,11 @@ public class character {
             System.out.println("Attack Successfull");
                 int damage = (int)(Math.random() * this.weapon.wepmodifier) + this.strength;
                 target.health -= damage;
-            }
-
-
+            } else System.out.println("Attack Unsuccessful");
     }
+
+
+
     
 
 
@@ -68,16 +69,15 @@ public class character {
 
     }
     
-    public void getInfo(){
-        System.out.println(name + " information:");
-        System.out.println("Health: " + health);
-        System.out.println("Strength: " + strength);
-        System.out.println("Defense: " + defense);
-        System.out.println("Speed: " + speed);
-        System.out.println("Team: " + team);
-        System.out.println("Weapon:" + weapon.wepname);
-        
+    public static String getInfo(character x) {
+        return(  
+        " (Health: " + x.health 
+        + " Strength: " + x.strength 
+        + " Defense: " + x.defense 
+        + " Speed: " + x.speed 
+        + " Weapon: " + x.weapon.wepname + ")");
     }
+
 }
 
 

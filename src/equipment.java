@@ -13,3 +13,4 @@ public equipment(String type, String name, int statModifier){
     }
 
 }
+

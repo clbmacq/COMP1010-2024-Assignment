@@ -1,39 +1,39 @@
-// import java.util.Scanner;
-// import java.util.Random;
+// // import java.util.Scanner;
+// // import java.util.Random;
 
-// public class test1 {
-//     public static void main(String[] args) {
+// // public class test1 {
+// //     public static void main(String[] args) {
         
-//         Scanner myObj = new Scanner(System.in);
+// //         Scanner myObj = new Scanner(System.in);
         
-//         Random random = new Random();
+// //         Random random = new Random();
         
-//         int systemChoice = random.nextInt(2); 
+// //         int systemChoice = random.nextInt(2); 
 
-//         String systemAction = (systemChoice == 0) ? "hit" : "block";
-//         System.out.println("System chose: " + systemAction);
+// //         String systemAction = (systemChoice == 0) ? "hit" : "block";
+// //         System.out.println("System chose: " + systemAction);
 
-//         System.out.print("Enter your choice (hit or block): ");
-//         String userChoice = myObj.nextLine();
+// //         System.out.print("Enter your choice (hit or block): ");
+// //         String userChoice = myObj.nextLine();
       
-//         if (userChoice.equalsIgnoreCase(systemAction)) {
-//             System.out.println("It's a tie! You both chose " + userChoice + ".");
-//         } else if (userChoice.equalsIgnoreCase("hit") && systemAction.equals("block")) {
-//             System.out.println("You hit, but the system blocked it!");
-//         } else if (userChoice.equalsIgnoreCase("block") && systemAction.equals("hit")) {
-//             System.out.println("You blocked the system's hit!");
-//         } else {
-//             System.out.println("Invalid input. Please enter either 'hit' or 'block'.");
-//         }
+// //         if (userChoice.equalsIgnoreCase(systemAction)) {
+// //             System.out.println("It's a tie! You both chose " + userChoice + ".");
+// //         } else if (userChoice.equalsIgnoreCase("hit") && systemAction.equals("block")) {
+// //             System.out.println("You hit, but the system blocked it!");
+// //         } else if (userChoice.equalsIgnoreCase("block") && systemAction.equals("hit")) {
+// //             System.out.println("You blocked the system's hit!");
+// //         } else {
+// //             System.out.println("Invalid input. Please enter either 'hit' or 'block'.");
+// //         }
 
         
-//         myObj.close();
-//     }
-// }
+// //         myObj.close();
+// //     }
+// // }
 
 
 
-// import java.util.Scanner;
+// // import java.util.Scanner;
 
 // public class App {
 
