@@ -1,16 +1,19 @@
+import java.util.ArrayList;
+
 public class character {
     String name; 
     int health;
     int strength;
     int defense;
     int speed;
-    String team;
+    String team; 
     int maxhp;
-    weapon weapon;
+    ArrayList<equipment> gear = new ArrayList<equipment>();
+    equipment equipment;
     
     
 // ----- Playable Character ----- //
-    public character(String name, int health, int maxhp, int strength, int defense, int speed, String team, weapon weapon){
+    public character(String name, int health, int maxhp, int strength, int defense, int speed, String team, ArrayList<equipment> gear){
         this.name = name; // name
         this.health = health; // current hitpoints
         this.maxhp = maxhp; // max hitpoints
@@ -18,14 +21,14 @@ public class character {
         this.defense = defense; // determines chance of being hit
         this.speed = speed; // determines initiative / move order
         this.team = team; // enemy or player team
-        this.weapon = weapon; // equipped weapon
+        this.gear = gear; // equipped weapon
     }
 
     public void attack(character target) {
         int roll = (int)Math.random() * 20;
         if (roll >= target.defense){ 
             System.out.println("Attack Successfull");
-                int damage = (int)(Math.random() * this.weapon.wepmodifier) + this.strength;
+                int damage = (int)(Math.random() * this.gear.get(0).statModifier);
                 target.health -= damage;
             } else System.out.println("Attack Unsuccessful");
     }
@@ -65,7 +68,7 @@ public class character {
         System.out.println(x.name + "'s Team is: " + x.team);
     }
     public void getWeapon(character x){
-            System.out.println(x.name + "'s equipped weapon is: " + x.weapon.wepname);
+            System.out.println(x.name + "'s equipped weapon is: " + x.gear.get(0).name);
 
     }
     
@@ -75,7 +78,7 @@ public class character {
         + " Strength: " + x.strength 
         + " Defense: " + x.defense 
         + " Speed: " + x.speed 
-        + " Weapon: " + x.weapon.wepname + ")");
+        + " Weapon: " + x.gear.get(0).name + ")");
     }
 
 }
