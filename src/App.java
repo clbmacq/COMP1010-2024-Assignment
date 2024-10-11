@@ -4,8 +4,8 @@ import java.util.ArrayList;
 public class App {
     public static void main(String[] args) throws Exception {
 
-        ArrayList<character> playerTeam = new ArrayList<character>(); 
 
+        // weapons list
         equipment WepLongsword = new equipment("Weapon", "LongSword", 10);
         equipment WepShortsword= new equipment("Weapon", "Shortsword", 10);
         equipment WepMachete = new equipment("Weapon", "Machete", 10);
@@ -18,7 +18,7 @@ public class App {
         ArrayList<equipment> geargram = new ArrayList<equipment>();
         
 
-        character Bob = new character("Bob", 10, 10, 10, 10, 10, "Enemy", gearbob);
+        character Bob = new character("Bob", 30, 30, 10, 10, 10, "Enemy", gearbob);
         gearbob.add(WepLongsword);
     
         character Caleb = new character("Caleb", 10, 10, 10, 10, 10, "Enemy", gearcaleb);
@@ -30,18 +30,13 @@ public class App {
         character Mimo = new character("Mimo", 20, 20, 5, 13, 15, "Enemy",gearmimo);
         gearmimo.add(WepDagger);
         
-        character Gram = new character("Gram", 40, 30, 10, 15, 20, "Default Player",geargram);
+        character Gram = new character("Gram", 40, 40, 10, 15, 20, "Default Player",geargram);
         geargram.add(WepLongsword);
         
-        
+        ArrayList<character> playerTeam = new ArrayList<character>();
+        ArrayList<character> yourTeam = new ArrayList<>();
 
-    // static void characterChoice(){
-    //     System.out.println("Please choose a character. \n1. Bob \n2. Caleb \n3. Jayden \n4. Mimo \nEnter the number corresponding to your choice: ");
-        
-    // }
-
-
-        // Test player Input 
+    //Player Input - Works 
         Scanner scanny = new Scanner(System.in);  
         System.out.println("Please choose a character. \n1. Bob" + character.getInfo(Bob) +  
         " \n2. Caleb" + character.getInfo(Caleb) + 
@@ -52,39 +47,62 @@ public class App {
         int choice = scanny.nextInt();
         if (choice == 1) {
             Bob.team = "Player";
-            playerTeam.add(Bob);
+            yourTeam.add(Bob);
             System.out.println("You have Chosen Bob");
         }
         else if (choice == 2) {
             Caleb.team = "Player";
-            playerTeam.add(Caleb);
+            yourTeam.add(Caleb);
             System.out.println("You have Chosen Caleb");
         }
         else if (choice == 3) {
             Jayden.team = "Player";
-            playerTeam.add(Jayden);
+            yourTeam.add(Jayden);
             System.out.println("You have Chosen Jayden");
         }
         else if (choice == 4) {
             Mimo.team = "Player";
-            playerTeam.add(Mimo);
+            yourTeam.add(Mimo);
             System.out.println("You have Chosen Mimo");
         }
         else {System.out.println("Invalid Choice, Defaulting to Bob"); 
         Bob.team = "Player";
-        playerTeam.add(Bob);
+        yourTeam.add(Bob);
         }
         System.out.println("Gram has also been added to your team");
-        playerTeam.add(Gram);
+        yourTeam.add(Gram);
 
         System.out.println("Your team:");
-        for(character member: playerTeam){
+        for(character member: yourTeam){
         System.out.println(member.name);
         }
 
+
+        System.out.println("A enemy has apppeared");
+
+        // FUNCTION DEFAULT ENEMY APPEARING //
+
+        /// ROUNDS //
+
+
+        /// END GAME FUNCTION / CONDITION
+    boolean gameOver = false;
+    int round = 0;
+    // while(gameOver == false){
+    //     System.out.println("Round: " + round);
+
+
+
+
+
+
+        
+    //     round += 1;
+    // }
         scanny.close();
-
-
-        actions.attack(Caleb, Mimo);
     }    
 }
+
+
+
+
