@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class App {
     public static void main(String[] args) throws Exception {
-
+        Random rand = new Random();
 
         // weapons list
         equipment WepLongsword = new equipment("Weapon", "LongSword", 10);
@@ -19,19 +19,19 @@ public class App {
         ArrayList<equipment> geargram = new ArrayList<equipment>();
         
 
-        character Bob = new character("Bob", 30, 30, 10, 10, 10, "Enemy", gearbob);
+        character Bob = new character("Bob", 30, 30, 10, 10, "Enemy", gearbob);
         gearbob.add(WepLongsword);
     
-        character Caleb = new character("Caleb", 10, 10, 10, 10, 10, "Enemy", gearcaleb);
+        character Caleb = new character("Caleb", 30, 30, 10, 10, "Enemy", gearcaleb);
         gearcaleb.add(WepShortsword);
 
-        character Jayden = new character("Jayden", 30, 30 ,5, 7, 5, "Enemy", gearjayden);
+        character Jayden = new character("Jayden", 20, 30 , 10, 10, "Enemy", gearjayden);
         gearjayden.add(WepMachete);
 
-        character Mimo = new character("Mimo", 20, 20, 5, 13, 15, "Enemy",gearmimo);
+        character Mimo = new character("Mimo", 20, 20, 20, 13, "Enemy",gearmimo);
         gearmimo.add(WepDagger);
         
-        character Gram = new character("Gram", 40, 40, 10, 15, 20, "Default Player",geargram);
+        character Gram = new character("Gram", 40, 40, 10, 15, "Default Player",geargram);
         geargram.add(WepLongsword);
         
         ArrayList<character> playerTeam = new ArrayList<character>();
@@ -93,19 +93,21 @@ if (!playerTeam.contains(Mimo)){
 }
 
 // Display enemy team
+System.out.println();
 System.out.println("Enemy Team:");
 for (character enemy : enemyTeam) {
     System.out.println(enemy.name);
 }
 
-System.out.println("Do you wish to accept the battle? (yes/no)");
+System.out.println("\nDo you wish to accept the battle? (yes/no)");
         String acceptBattle = scanny.next();
 
-        if (acceptBattle.equalsIgnoreCase("yes")) {
+        if (acceptBattle.equals("yes")) {
             System.out.println("You have accepted the battle! Let the fight begin!");
         }
         else {
-            System.out.println("You have forfeited the battle"); System.exit(0);}
+            System.out.println("You have forfeited the battle"); System.exit(0);
+        }
         
 
 
@@ -114,38 +116,80 @@ System.out.println("Do you wish to accept the battle? (yes/no)");
 
 // ------------------------- mid round variables----------------------------
 boolean gameOver = false;
-Random rand = new Random();
 character currentEnemy = enemyTeam.get(rand.nextInt(enemyTeam.size())); 
 System.out.println("A Wild Enemy has Appeared: " +  currentEnemy.name);
+enemyTeam.remove(currentEnemy);
+
+
+
+
+
+
+
 
 
 
 
  // ------------------------Game start - rounds----------------------------
 while (gameOver == false){
-ArrayList<character> roundOrder = new ArrayList<character>();
 
 
+    System.out.println();
+    System.out.println("It's your turn! \nChoose a Character to make a move with: \n1. " +  playerTeam.get(0).name + "\n2. " + playerTeam.get(1).name);
+
+
+ 
+    int playerChoice = scanny.nextInt();
+    if (playerChoice == 1){ 
+        System.out.println("\n What would you like " + playerTeam.get(0).name + " to do? \n1. Attack \n2. Heal");
+        playerChoice = scanny.nextInt();
+        if (playerChoice == 1){
+            actions.attack(playerTeam.get(0), currentEnemy);
+         } else if (playerChoice == 2){
+                actions.heal(playerTeam.get(0));
+        }
+    }
+    else if (playerChoice == 2){ 
+        System.out.println("\nWhat would you like " + playerTeam.get(1).name + " to do? \n1. Attack \n2. Heal");
+        playerChoice = scanny.nextInt();
+        if (playerChoice == 1){
+            actions.attack(playerTeam.get(1), currentEnemy);
+         } else if (playerChoice == 2){
+            actions.heal(playerTeam.get(1));
+     
+        }
+    }
+// ENEMY TURN HERE
+
+
+
+
+
+
+
+}
+
+    
+
+
+
+
+    
 
 
  
 
  // game over conditions
-if (playerTeam.get(0).health <= 0 && playerTeam.get(1).health <= 0){
-    System.out.println("Game Over, You lost");
-    gameOver = true;
-} 
-    
-if (enemyTeam.get(0).health <= 0 && enemyTeam.get(1).health <= 0 && enemyTeam.get(2).health <= 0){
-    System.out.println("Winner Winner, Chicken Dinner");
-    gameOver = true;
-}
+    if (playerTeam.get(0).health <= 0 && playerTeam.get(1).health <= 0){
+        System.out.println("Game Over, You lost");
+        gameOver = true;
+    } 
+        
+    if (enemyTeam.get(0).health <= 0 && enemyTeam.get(1).health <= 0 && enemyTeam.get(2).health <= 0){
+        System.out.println("Winner Winner, Chicken Dinner");
+        gameOver = true;
+    }
 
-
-
-
-
-}
 
 
 
@@ -154,8 +198,14 @@ if (enemyTeam.get(0).health <= 0 && enemyTeam.get(1).health <= 0 && enemyTeam.ge
 
         scanny.close();
         System.exit(0);
-    }    
- }
+       
+    
+
+}}
+
+
+
+    
 
 
 

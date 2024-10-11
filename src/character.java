@@ -5,7 +5,6 @@ public class character {
     int health;
     int strength;
     int defense;
-    int speed;
     String team; 
     int maxhp;
     ArrayList<equipment> gear = new ArrayList<equipment>();
@@ -13,13 +12,12 @@ public class character {
     
     
 // ----- Playable Character ----- //
-    public character(String name, int health, int maxhp, int strength, int defense, int speed, String team, ArrayList<equipment> gear){
+    public character(String name, int health, int maxhp, int strength, int defense, String team, ArrayList<equipment> gear){
         this.name = name; // name
         this.health = health; // current hitpoints
         this.maxhp = maxhp; // max hitpoints
         this.strength = strength; // determines damage
         this.defense = defense; // determines chance of being hit
-        this.speed = speed; // determines initiative / move order
         this.team = team; // enemy or player team
         this.gear = gear; // equipped weapon
     }
@@ -61,9 +59,6 @@ public class character {
         System.out.println(x.name + "'s Defense is: " + x.defense);
     }
 
-    public void getSpeed(character x){
-        System.out.println(x.name + "'s Speed is: " + x.speed);
-    }
     public void getTeam(character x){
         System.out.println(x.name + "'s Team is: " + x.team);
     }
@@ -77,7 +72,6 @@ public class character {
         " (Health: " + x.health 
         + " Strength: " + x.strength 
         + " Defense: " + x.defense 
-        + " Speed: " + x.speed 
         + " Weapon: " + x.gear.get(0).name + ")");
     }
 
