@@ -34,9 +34,9 @@ public class App {
         geargram.add(WepLongsword);
         
         ArrayList<character> playerTeam = new ArrayList<character>();
-        ArrayList<character> yourTeam = new ArrayList<>();
+        ArrayList<character> enemyTeam = new ArrayList<character>();
 
-    //Player Input - Works 
+    //Player Input - WORKS
         Scanner scanny = new Scanner(System.in);  
         System.out.println("Please choose a character. \n1. Bob" + character.getInfo(Bob) +  
         " \n2. Caleb" + character.getInfo(Caleb) + 
@@ -47,58 +47,93 @@ public class App {
         int choice = scanny.nextInt();
         if (choice == 1) {
             Bob.team = "Player";
-            yourTeam.add(Bob);
+            playerTeam.add(Bob);
             System.out.println("You have Chosen Bob");
         }
         else if (choice == 2) {
             Caleb.team = "Player";
-            yourTeam.add(Caleb);
+            playerTeam.add(Caleb);
             System.out.println("You have Chosen Caleb");
         }
         else if (choice == 3) {
             Jayden.team = "Player";
-            yourTeam.add(Jayden);
+            playerTeam.add(Jayden);
             System.out.println("You have Chosen Jayden");
         }
         else if (choice == 4) {
             Mimo.team = "Player";
-            yourTeam.add(Mimo);
+            playerTeam.add(Mimo);
             System.out.println("You have Chosen Mimo");
         }
         else {System.out.println("Invalid Choice, Defaulting to Bob"); 
         Bob.team = "Player";
-        yourTeam.add(Bob);
+        playerTeam.add(Bob);
         }
         System.out.println("Gram has also been added to your team");
-        yourTeam.add(Gram);
+        playerTeam.add(Gram);
 
         System.out.println("Your team:");
-        for(character member: yourTeam){
-        System.out.println(member.name);
+        for(character member: playerTeam){
+            System.out.println(member.name);
         }
 
+ //Adding remaining characters to enemy team
+if (!playerTeam.contains(Bob)){
+    enemyTeam.add(Bob);
+}
+if (!playerTeam.contains(Caleb)){
+    enemyTeam.add(Caleb);
+}
+if (!playerTeam.contains(Jayden)) {
+    enemyTeam.add(Jayden);
+}
+if (!playerTeam.contains(Mimo)){
+    enemyTeam.add(Mimo);
+}
 
-        System.out.println("A enemy has apppeared");
-
-        // FUNCTION DEFAULT ENEMY APPEARING //
-
-        /// ROUNDS //
-
-
-        /// END GAME FUNCTION / CONDITION
-    boolean gameOver = false;
-    int round = 0;
-    // while(gameOver == false){
-    //     System.out.println("Round: " + round);
+// Display enemy team
+System.out.println("Enemy Team:");
+for (character enemy : enemyTeam) {
+    System.out.println(enemy.name);
+}
 
 
 
+// ------------------------- mid round variables----------------------------
+boolean gameOver = false;
+
+ // ------------------------Game start - rounds----------------------------
+while (gameOver == false){
 
 
 
-        
-    //     round += 1;
-    // }
+
+
+
+ 
+
+ // game over conditions
+if (playerTeam.get(0).health <= 0 && playerTeam.get(1).health <= 0){
+    System.out.println("Game Over, You lost");
+    gameOver = true;
+} 
+    
+if (enemyTeam.get(0).health <= 0 && enemyTeam.get(1).health <= 0 && enemyTeam.get(2).health <= 0){
+    System.out.println("Winner Winner, Chicken Dinner");
+    gameOver = true;
+}
+
+
+
+
+
+}
+
+
+
+
+
+
         scanny.close();
     }    
 }
