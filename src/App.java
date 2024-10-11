@@ -12,6 +12,11 @@ public class App {
         equipment WepMachete = new equipment("Weapon", "Machete", 10);
         equipment WepDagger = new equipment("Weapon", "Dagger", 10);
 
+        equipment heavyArmor = new equipment("Armor", "HeavyArmor", 8);
+        equipment lightArmor = new equipment("Armor", "LightArmor", 8);
+        
+
+
         ArrayList<equipment> gearbob = new ArrayList<equipment>();
         ArrayList<equipment> gearcaleb = new ArrayList<equipment>();
         ArrayList<equipment> gearjayden = new ArrayList<equipment>();
@@ -25,7 +30,7 @@ public class App {
         character Caleb = new character("Caleb", 30, 30, 10, 10, "Enemy", gearcaleb);
         gearcaleb.add(WepShortsword);
 
-        character Jayden = new character("Jayden", 20, 30 , 10, 10, "Enemy", gearjayden);
+        character Jayden = new character("Jayden", 30, 30 , 10, 10, "Enemy", gearjayden);
         gearjayden.add(WepMachete);
 
         character Mimo = new character("Mimo", 20, 20, 20, 13, "Enemy",gearmimo);
