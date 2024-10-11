@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -97,15 +98,32 @@ for (character enemy : enemyTeam) {
     System.out.println(enemy.name);
 }
 
+System.out.println("Do you wish to accept the battle? (yes/no)");
+        String acceptBattle = scanny.next();
+
+        if (acceptBattle.equalsIgnoreCase("yes")) {
+            System.out.println("You have accepted the battle! Let the fight begin!");
+        }
+        else {
+            System.out.println("You have forfeited the battle"); System.exit(0);}
+        
+
+
+
 
 
 // ------------------------- mid round variables----------------------------
 boolean gameOver = false;
+Random rand = new Random();
+character currentEnemy = enemyTeam.get(rand.nextInt(enemyTeam.size())); 
+System.out.println("A Wild Enemy has Appeared: " +  currentEnemy.name);
+
+
+
 
  // ------------------------Game start - rounds----------------------------
 while (gameOver == false){
-
-
+ArrayList<character> roundOrder = new ArrayList<character>();
 
 
 
@@ -135,8 +153,14 @@ if (enemyTeam.get(0).health <= 0 && enemyTeam.get(1).health <= 0 && enemyTeam.ge
 
 
         scanny.close();
+        System.exit(0);
     }    
-}
+ }
+
+
+
+
+
 
 
 
