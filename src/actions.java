@@ -11,10 +11,11 @@ public class actions{
             int damage = rand.nextInt(attackerWeapon.statModifier - 1) + 1 + (int)((attacker.strength - 10)/2);
             target.health -= damage;
             System.out.println(attacker.name + " attacked " + target.name + " with their "+ attackerWeapon.name + "! " + target.name + " took " + damage + " points of damage.");
-            System.out.println(target.name + "'s Current health is: " + target.health);
+            System.out.println(target.name + "'s Current health is: " + target.health + " Out Of " + target.maxhp);
         } 
         else {System.out.println("Attack Unsuccessful");
         System.out.println("You rolled " + roll + ", which is lower than " + target.name + "'s defense of " + target.defense);
+    
         }
     }
     public static void heal(character target){
