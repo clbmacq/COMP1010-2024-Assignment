@@ -12,11 +12,7 @@ public class App {
         equipment WepShortsword= new equipment("Weapon", "Shortsword", 10);
         equipment WepMachete = new equipment("Weapon", "Machete", 10);
         equipment WepDagger = new equipment("Weapon", "Dagger", 10);
-
-        equipment heavyArmor = new equipment("Armor", "HeavyArmor", 8);
-        equipment lightArmor = new equipment("Armor", "LightArmor", 8);
         
-
 
         ArrayList<equipment> gearbob = new ArrayList<equipment>();
         ArrayList<equipment> gearcaleb = new ArrayList<equipment>();
@@ -25,19 +21,19 @@ public class App {
         ArrayList<equipment> geargram = new ArrayList<equipment>();
         
 
-        character Bob = new character("Bob", 30, 30, 10, 10, "Enemy", gearbob);
+        character Bob = new character("Bob", 30, 30, 20, 7, "Enemy", gearbob);
         gearbob.add(WepLongsword);
     
-        character Caleb = new character("Caleb", 30, 30, 10, 10, "Enemy", gearcaleb);
+        character Caleb = new character("Caleb", 30, 30, 15, 7, "Enemy", gearcaleb);
         gearcaleb.add(WepShortsword);
 
-        character Jayden = new character("Jayden", 30, 30 , 10, 10, "Enemy", gearjayden);
+        character Jayden = new character("Jayden", 30, 30 , 15, 7, "Enemy", gearjayden);
         gearjayden.add(WepMachete);
 
-        character Mimo = new character("Mimo", 20, 20, 20, 13, "Enemy",gearmimo);
+        character Mimo = new character("Mimo", 20, 20, 30, 7, "Enemy",gearmimo);
         gearmimo.add(WepDagger);
         
-        character Gram = new character("Gram", 40, 40, 10, 15, "Default Player",geargram);
+        character Gram = new character("Gram", 40, 40, 40, 7, "Default Player",geargram);
         geargram.add(WepLongsword);
         
         ArrayList<character> playerTeam = new ArrayList<character>();
@@ -114,35 +110,16 @@ System.out.println("\nDo you wish to accept the battle? (yes/no)");
         else {
             System.out.println("You have forfeited the battle"); System.exit(0);
         }
-        
-
-
-
-
-
 // ------------------------- mid round variables----------------------------
-boolean gameOver = false;
 character currentEnemy = enemyTeam.get(rand.nextInt(enemyTeam.size())); 
 System.out.println("A Wild Enemy has Appeared: " +  currentEnemy.name);
-enemyTeam.remove(currentEnemy);
-
-
-
-
-
-
-
-
-
-
 
  // ------------------------Game start - rounds----------------------------
-while (gameOver == false){
-
+while (true){
     System.out.println("\nIt's your turn! \nChoose a Character to make a move with: \n1. " +  playerTeam.get(0).name + "\n2. " + playerTeam.get(1).name);
 
 
- 
+ // PLAYER TURN------------------------------------------------------------------------------------------------------------------------------
     int playerChoice = scanny.nextInt();
     if (playerChoice == 1){ 
         System.out.println("\n What would you like " + playerTeam.get(0).name + " to do? \n1. Attack \n2. Heal");
@@ -163,10 +140,19 @@ while (gameOver == false){
      
         }
     }
-// ENEMY TURN HERE
-System.out.println("\nIt is " + currentEnemy.name + "'s turn!");
-actions.attack(currentEnemy, playerTeam.get(0));
+       if (currentEnemy.health <= 0) {
+            enemyTeam.remove(currentEnemy);
+            System.out.println("Enemies Remaining: ");
+            for (character x : enemyTeam) {System.out.println("   " + x.name);}
+            if (enemyTeam.size() > 0){
+            currentEnemy = enemyTeam.get(rand.nextInt((enemyTeam.size())));
+       }
+        }
+            
+deathCheck.checkForDeaths(playerTeam, enemyTeam, currentEnemy);
 
+// ENEMY TURN ---------------------------------------------------------------------------------------------------------------------------------------------------------------
+System.out.println("\nIt is " + currentEnemy.name + "'s turn!");
 character targetPC = playerTeam.get(rand.nextInt(playerTeam.size()));
 
 if (currentEnemy.health == currentEnemy.maxhp) {
@@ -175,15 +161,14 @@ if (currentEnemy.health == currentEnemy.maxhp) {
 
 else if (currentEnemy.health > (currentEnemy.maxhp/2) && currentEnemy.health < currentEnemy.maxhp){ // 50% to heal
     int chance = rand.nextInt(2);
-    System.out.println(chance);
 
     if (chance == 0){
         actions.attack(currentEnemy, targetPC);
-        System.out.println("testtesttest");
+
     }
     else if (chance == 1) {
         actions.heal(currentEnemy);
-        System.out.println("test");}
+        }
 
 }
 
@@ -197,41 +182,13 @@ else if (currentEnemy.health < (currentEnemy.maxhp/2)){ // 66.6 % to heal
 
 
 
-    
-
-// RNG Based Healing (IF ENEMY CURRENT HP *STATISTICALLY LOWER THEN HIGHER TO ROLL / TURN TO HEAL )
+deathCheck.checkForDeaths(playerTeam, enemyTeam, currentEnemy);
 
 
 
 
 
-
-
-}
-
- // game over conditions - SCRIPT 
-    if (playerTeam.get(0).health <= 0 && playerTeam.get(1).health <= 0){
-        System.out.println("Game Over, You lost");
-        gameOver = true;
-    } 
-        
-    if (enemyTeam.get(0).health <= 0 && enemyTeam.get(1).health <= 0 && enemyTeam.get(2).health <= 0){
-        System.out.println("Winner Winner, Chicken Dinner");
-        gameOver = true;
-    }
-
-
-
-
-
-
-
-        scanny.close();
-        System.exit(0);
-       
-    
-
-}}
+}}}
 
 
 
