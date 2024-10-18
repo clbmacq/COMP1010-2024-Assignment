@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Currency;
 import java.util.Random;
 
 public class App {
@@ -138,9 +139,7 @@ enemyTeam.remove(currentEnemy);
  // ------------------------Game start - rounds----------------------------
 while (gameOver == false){
 
-
-    System.out.println();
-    System.out.println("It's your turn! \nChoose a Character to make a move with: \n1. " +  playerTeam.get(0).name + "\n2. " + playerTeam.get(1).name);
+    System.out.println("\nIt's your turn! \nChoose a Character to make a move with: \n1. " +  playerTeam.get(0).name + "\n2. " + playerTeam.get(1).name);
 
 
  
@@ -165,6 +164,42 @@ while (gameOver == false){
         }
     }
 // ENEMY TURN HERE
+System.out.println("\nIt is " + currentEnemy.name + "'s turn!");
+actions.attack(currentEnemy, playerTeam.get(0));
+
+character targetPC = playerTeam.get(rand.nextInt(playerTeam.size()));
+
+if (currentEnemy.health == currentEnemy.maxhp) {
+    actions.attack(currentEnemy, targetPC);}
+
+
+else if (currentEnemy.health > (currentEnemy.maxhp/2) && currentEnemy.health < currentEnemy.maxhp){ // 50% to heal
+    int chance = rand.nextInt(2);
+    System.out.println(chance);
+
+    if (chance == 0){
+        actions.attack(currentEnemy, targetPC);
+        System.out.println("testtesttest");
+    }
+    else if (chance == 1) {
+        actions.heal(currentEnemy);
+        System.out.println("test");}
+
+}
+
+else if (currentEnemy.health < (currentEnemy.maxhp/2)){ // 66.6 % to heal
+    int chance = rand.nextInt(3);
+    if (chance == 0){
+        actions.attack(currentEnemy, targetPC);
+    }
+    else if (chance == 1 || chance == 2){actions.heal(currentEnemy);}
+}
+
+
+
+    
+
+// RNG Based Healing (IF ENEMY CURRENT HP *STATISTICALLY LOWER THEN HIGHER TO ROLL / TURN TO HEAL )
 
 
 
@@ -174,17 +209,7 @@ while (gameOver == false){
 
 }
 
-    
-
-
-
-
-    
-
-
- 
-
- // game over conditions
+ // game over conditions - SCRIPT 
     if (playerTeam.get(0).health <= 0 && playerTeam.get(1).health <= 0){
         System.out.println("Game Over, You lost");
         gameOver = true;

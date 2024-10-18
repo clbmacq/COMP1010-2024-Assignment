@@ -14,10 +14,11 @@ public class actions{
             System.out.println(target.name + "'s Current health is: " + target.health + " Out Of " + target.maxhp);
         } 
         else {System.out.println("Attack Unsuccessful");
-        System.out.println("You rolled " + roll + ", which is lower than " + target.name + "'s defense of " + target.defense);
+        System.out.println(attacker.name + " rolled " + roll + ", which is lower than " + target.name + "'s defense of " + target.defense);
     
         }
     }
+    
     public static void heal(character target){
         Random rand = new Random(); // stay 
         int preHealth = target.health; // stay unless 
