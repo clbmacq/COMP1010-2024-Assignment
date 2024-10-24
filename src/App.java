@@ -1,7 +1,6 @@
-import java.util.Scanner;
 import java.util.ArrayList;
-import java.util.Currency;
 import java.util.Random;
+import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -14,11 +13,11 @@ public class App {
         equipment WepDagger = new equipment("Weapon", "Dagger", 10);
         
 
-        ArrayList<equipment> gearbob = new ArrayList<equipment>();
-        ArrayList<equipment> gearcaleb = new ArrayList<equipment>();
-        ArrayList<equipment> gearjayden = new ArrayList<equipment>();
-        ArrayList<equipment> gearmimo = new ArrayList<equipment>();
-        ArrayList<equipment> geargram = new ArrayList<equipment>();
+        ArrayList<equipment> gearbob = new ArrayList<>();
+        ArrayList<equipment> gearcaleb = new ArrayList<>();
+        ArrayList<equipment> gearjayden = new ArrayList<>();
+        ArrayList<equipment> gearmimo = new ArrayList<>();
+        ArrayList<equipment> geargram = new ArrayList<>();
         
 
         character Bob = new character("Bob", 30, 30, 20, 7, "Enemy", gearbob);
@@ -36,8 +35,8 @@ public class App {
         character Gram = new character("Gram", 40, 40, 40, 7, "Default Player",geargram);
         geargram.add(WepLongsword);
         
-        ArrayList<character> playerTeam = new ArrayList<character>();
-        ArrayList<character> enemyTeam = new ArrayList<character>();
+        ArrayList<character> playerTeam = new ArrayList<>();
+        ArrayList<character> enemyTeam = new ArrayList<>();
 
     //Player Input - WORKS
         Scanner scanny = new Scanner(System.in);  
@@ -46,8 +45,7 @@ public class App {
         "\n3. Jayden" + character.getInfo(Jayden) + 
         "\n4. Mimo" + character.getInfo(Mimo) + 
         " \nEnter the number corresponding to your choice: ");
-
-        int choice = scanny.nextInt();
+        int choice = userInput.requestInt(4);
         if (choice == 1) {
             Bob.team = "Player";
             playerTeam.add(Bob);
@@ -120,10 +118,10 @@ while (true){
 
 
  // PLAYER TURN------------------------------------------------------------------------------------------------------------------------------
-    int playerChoice = scanny.nextInt();
-    if (playerChoice == 1){ 
+ int playerChoice = userInput.requestInt(2);
+ if (playerChoice == 1){ 
         System.out.println("\n What would you like " + playerTeam.get(0).name + " to do? \n1. Attack \n2. Heal");
-        playerChoice = scanny.nextInt();
+        playerChoice = userInput.requestInt(2);
         if (playerChoice == 1){
             actions.attack(playerTeam.get(0), currentEnemy);
          } else if (playerChoice == 2){
@@ -132,7 +130,7 @@ while (true){
     }
     else if (playerChoice == 2){ 
         System.out.println("\nWhat would you like " + playerTeam.get(1).name + " to do? \n1. Attack \n2. Heal");
-        playerChoice = scanny.nextInt();
+        playerChoice = userInput.requestInt(2);
         if (playerChoice == 1){
             actions.attack(playerTeam.get(1), currentEnemy);
          } else if (playerChoice == 2){
@@ -144,7 +142,7 @@ while (true){
             enemyTeam.remove(currentEnemy);
             System.out.println("Enemies Remaining: ");
             for (character x : enemyTeam) {System.out.println("   " + x.name);}
-            if (enemyTeam.size() > 0){
+            if (!enemyTeam.isEmpty()){
             currentEnemy = enemyTeam.get(rand.nextInt((enemyTeam.size())));
        }
         }

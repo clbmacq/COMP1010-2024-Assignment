@@ -10,6 +10,7 @@ public class actions{
             System.out.println("Attack Successfull");
             int damage = rand.nextInt(attackerWeapon.statModifier - 1) + 1 + (int)((attacker.strength - 10)/2);
             target.health -= damage;
+            if (target.health < 0) { target.health = 0;}
             System.out.println(attacker.name + " attacked " + target.name + " with their "+ attackerWeapon.name + "! " + target.name + " took " + damage + " points of damage.");
             System.out.println(target.name + "'s Current health is: " + target.health + " Out Of " + target.maxhp);
         } 
