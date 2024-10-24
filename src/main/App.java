@@ -177,6 +177,9 @@ public class App {
                     actions.heal(currentEnemy);
                 }
             }
+
+            if 
+
             deathCheck.checkForDeaths(playerTeam, enemyTeam, currentEnemy);
         }
     }
