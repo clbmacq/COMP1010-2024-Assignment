@@ -8,6 +8,13 @@
             "type": "java",
             "name": "App",
             "request": "launch",
+            "mainClass": "main.App",
+            "projectName": "COMP1010-2024-Assignment_10d1972c"
+        },
+        {
+            "type": "java",
+            "name": "App",
+            "request": "launch",
             "mainClass": "App",
             "projectName": "COMP1010-2024-Assignment_10d1972c"
         },
