@@ -26,16 +26,28 @@ public class deathCheckTest {
         ArrayList<character> playerTeam = new ArrayList<>();
         ArrayList<character> enemyTeam = new ArrayList<>();
 
-        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        PrintStream originalOut = System.out;
-        System.setOut(new PrintStream(outContent));
         
+        ArrayList<equipment> gearbob = new ArrayList<>();
+
+        character Bob = new character("Bob", 30, 30, 30, 7, "Enemy", gearbob);
+        gearbob.add(WepLongsword);
+        
+        playerTeam.add();
+
         // Check for deaths and expect true when enemy team is empty
         deathCheck.checkForDeaths(playerTeam, enemyTeam);
-        System.setOut(originalOut);
-        System.out.println(outContent.toString());
         assertTrue(deathCheck.checkForDeaths(playerTeam, enemyTeam));
     
    }
+   @Test
+   public void testNotEmpty() {
+        // Create an empty player team
+        ArrayList<character> playerTeam = new ArrayList<>();
+        ArrayList<character> enemyTeam = new ArrayList<>();
+        enemyTeam.add(new character("Enemy1", 10, 10, 10, 10, "Enemy", new ArrayList<>()));
+        playerTeam.add(new character("Player1", 10, 10, 10, 10, "Enemy", new ArrayList<>()));
+        deathCheck.checkForDeaths(playerTeam, enemyTeam);
+    }
+}   
    
-}
+   

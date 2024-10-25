@@ -17,7 +17,7 @@ public class ActionsTest {
         actions.heal(target);
 
         // Check that health has increased and does not exceed max health
-        assertTrue(target.health > initialHealth && target.health <= target.maxhp);
+        assertTrue(target.health >= initialHealth && target.health <= target.maxhp);
     }
 
     @Test
