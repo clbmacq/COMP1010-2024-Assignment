@@ -123,7 +123,7 @@ public class App {
                 if(playerTeam.get(player).health<=0){
                     System.out.println(playerTeam.get(player).name + " is dead ");
                     playerTeam.remove(player);
-                    System.out.println(playerTeam);
+                    System.out.println(playerTeam.get(0));
                 }
             }
             if(playerTeam.size()==2){
