@@ -119,10 +119,11 @@ public class App {
 
         // ------------------------Game start - rounds----------------------------
         while (true){
-            for(character player: playerTeam){
-                if(player.health<=0){
-                    System.out.println(player.name + " is dead ");
+            for(int player = 0; player < playerTeam.size();player++){
+                if(playerTeam.get(player).health<=0){
+                    System.out.println(playerTeam.get(player).name + " is dead ");
                     playerTeam.remove(player);
+                    System.out.println(playerTeam);
                 }
             }
             if(playerTeam.size()==2){
