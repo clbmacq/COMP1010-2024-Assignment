@@ -1,4 +1,4 @@
-package main;
+
 import java.util.ArrayList;
 public class deathCheck {
     public static void checkForDeaths(ArrayList<character> playerTeam, ArrayList<character> enemyTeam, character currentEnemy ){

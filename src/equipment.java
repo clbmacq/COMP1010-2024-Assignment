@@ -1,4 +1,4 @@
-package main;
+
 public class equipment {
 String type;
 String name;
