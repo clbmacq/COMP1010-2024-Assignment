@@ -42,41 +42,44 @@ public class App {
 
         //Player Input
         Scanner scanny = new Scanner(System.in);  
-        System.out.println("\n4. Mimo" + 
-                "Please choose a character. \n1. Bob" + character.getInfo(Bob) +
-                " \n2. Caleb" + character.getInfo(Caleb) +
-                "\n3. Jayden" + character.getInfo(Jayden) + character.getInfo(Mimo) + 
+        System.out.println( "Please choose a character." + 
+                "\n1. Bob" + character.getInfo(Bob) +
+                "\n2. Caleb" + character.getInfo(Caleb) +
+                "\n3. Jayden" + character.getInfo(Jayden) + 
+                "\n4. Mimo" + character.getInfo(Mimo) + 
         " \nEnter the number corresponding to your choice: ");
         int choice = userInput.requestInt(4);
-        if (choice == 1) {
-            Bob.team = "Player";
-            playerTeam.add(Bob);
-            System.out.println("You have Chosen Bob");
-        }
-        else if (choice == 2) {
-            Caleb.team = "Player";
-            playerTeam.add(Caleb);
-            System.out.println("You have Chosen Caleb");
-        }
-        else if (choice == 3) {
-            Jayden.team = "Player";
-            playerTeam.add(Jayden);
-            System.out.println("You have Chosen Jayden");
-        }
-        else if (choice == 4) {
-            Mimo.team = "Player";
-            playerTeam.add(Mimo);
-            System.out.println("You have Chosen Mimo");
-        }
-        else {
-            System.out.println("Invalid Choice, Defaulting to Bob"); 
-            Bob.team = "Player";
-            playerTeam.add(Bob);
+        switch (choice) {
+            case 1 -> {
+                Bob.team = "Player";
+                playerTeam.add(Bob);
+                System.out.println("You have Chosen Bob");
+            }
+            case 2 -> {
+                Caleb.team = "Player";
+                playerTeam.add(Caleb);
+                System.out.println("You have Chosen Caleb");
+            }
+            case 3 -> {
+                Jayden.team = "Player";
+                playerTeam.add(Jayden);
+                System.out.println("You have Chosen Jayden");
+            }
+            case 4 -> {
+                Mimo.team = "Player";
+                playerTeam.add(Mimo);
+                System.out.println("You have Chosen Mimo");
+            }
+            default -> {
+                System.out.println("Invalid Choice, Defaulting to Bob");
+                Bob.team = "Player";
+                playerTeam.add(Bob);
+            }
         }
         System.out.println("Gram has also been added to your team");
         playerTeam.add(Gram);
 
-        System.out.println("Your team:");
+        System.out.println("\nYour team:");
         for(character member: playerTeam){
             System.out.println(member.name);
         }
@@ -117,10 +120,20 @@ public class App {
 
         // ------------------------Game start - rounds----------------------------
         while (true){
-            System.out.println("\nIt's your turn! \nChoose a Character to make a move with: \n1. " +  playerTeam.get(0).name + "\n2. " + playerTeam.get(1).name);
-
+            for(character player: playerTeam){
+                if(player.health<=0){
+                    System.out.println(player.name + " is dead ");
+                    playerTeam.remove(player);
+                }
+            }
+            if(playerTeam.size()==2){
+                System.out.println("\nIt's your turn! \nChoose a Character to make a move with: \n1. " +  playerTeam.get(0).name + "\n2. " + playerTeam.get(1).name);
+            }
+            else {
+                System.out.println("\nIt's your turn! \nChoose a Character to make a move with: \n1. " +  playerTeam.get(0).name);
+            }
             // PLAYER TURN------------------------------------------------------------------------------------------------------------------------------
-            int playerChoice = userInput.requestInt(2);
+            int playerChoice = userInput.requestInt(playerTeam.size());
             if (playerChoice == 1){ 
                 System.out.println("\n What would you like " + playerTeam.get(0).name + " to do? \n1. Attack \n2. Heal");
                 playerChoice = userInput.requestInt(2);
@@ -148,6 +161,7 @@ public class App {
                 currentEnemy = enemyTeam.get(rand.nextInt((enemyTeam.size())));
                 }
             }
+            
             
             deathCheck.checkForDeaths(playerTeam, enemyTeam, currentEnemy);
 
@@ -177,8 +191,6 @@ public class App {
                     actions.heal(currentEnemy);
                 }
             }
-
-            if 
 
             deathCheck.checkForDeaths(playerTeam, enemyTeam, currentEnemy);
         }

@@ -13,7 +13,7 @@ public class actions {
             target.health -= damage;
             if (target.health < 0) { target.health = 0;}
             System.out.println(attacker.name + " attacked " + target.name + " with their "+ attackerWeapon.name + "! " + target.name + " took " + damage + " points of damage.");
-            System.out.println(target.name + "'s Current health is: " + target.health + " Out Of " + target.maxhp);
+            System.out.println("\n" + target.name + "'s Current health is: " + target.health + " Out Of " + target.maxhp);
         }
         else {System.out.println
         ("Attack Unsuccessful");
