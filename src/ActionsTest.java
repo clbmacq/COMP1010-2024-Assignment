@@ -57,4 +57,25 @@ public class ActionsTest {
         // Health should not exceed max health
         assertTrue(target.health <= target.maxhp);
     }
+
+
+    @Test
+    public void testAttackSuccess() {
+        ArrayList<equipment> attackerGear = new ArrayList<>();
+        attackerGear.add(new equipment("Sword"," Wooden Sword", 5)); // Assuming Equipment constructor takes name and statModifier
+        character attacker = new character("Warrior", 15, 20, 12, 10, "Friendly", attackerGear);
+
+        ArrayList<equipment> targetGear = new ArrayList<>();
+        targetGear.add(new equipment("Shield", "Wooden Shield", 3));
+        character target = new character("Mage", 10, 10, 10, 10, "Enemy", targetGear);
+
+        int initialHealth = target.health;
+        actions.attack(attacker, target);
+
+        // Ensure target's health has decreased
+        assertTrue(target.health < initialHealth);
+    }
+
+    
 }
+

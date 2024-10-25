@@ -1,14 +1,15 @@
 
 import java.util.ArrayList;
 public class deathCheck {
-    public static void checkForDeaths(ArrayList<character> playerTeam, ArrayList<character> enemyTeam, character currentEnemy ){
+    public static boolean checkForDeaths(ArrayList<character> playerTeam, ArrayList<character> enemyTeam){
         if (playerTeam.isEmpty()){
             System.out.println("\nGame Over, You lost");
-            System.exit(0);
+            return true;
         } 
         if (enemyTeam.isEmpty()){
             System.out.println("\nWinner Winner, Chicken Dinner");
-            System.exit(0);
+            return true;
         }
+        return false;
     }
 }

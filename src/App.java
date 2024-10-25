@@ -21,16 +21,16 @@ public class App {
         ArrayList<equipment> gearmimo = new ArrayList<>();
         ArrayList<equipment> geargram = new ArrayList<>();
 
-        character Bob = new character("Bob", 30, 30, 20, 7, "Enemy", gearbob);
+        character Bob = new character("Bob", 30, 30, 30, 7, "Enemy", gearbob);
         gearbob.add(WepLongsword);
     
-        character Caleb = new character("Caleb", 30, 30, 15, 7, "Enemy", gearcaleb);
+        character Caleb = new character("Caleb", 45, 40, 20, 7, "Enemy", gearcaleb);
         gearcaleb.add(WepShortsword);
 
-        character Jayden = new character("Jayden", 30, 30 , 15, 7, "Enemy", gearjayden);
+        character Jayden = new character("Jayden", 40, 40 , 25, 7, "Enemy", gearjayden);
         gearjayden.add(WepMachete);
 
-        character Mimo = new character("Mimo", 20, 20, 30, 7, "Enemy",gearmimo);
+        character Mimo = new character("Mimo", 35, 35, 25, 7, "Enemy",gearmimo);
         gearmimo.add(WepDagger);
         
         character Gram = new character("Gram", 40, 40, 40, 7, "Default Player",geargram);
@@ -123,9 +123,12 @@ public class App {
                 if(playerTeam.get(player).health<=0){
                     System.out.println(playerTeam.get(player).name + " is dead ");
                     playerTeam.remove(player);
-                    System.out.println(playerTeam.get(0));
+                    if (deathCheck.checkForDeaths(playerTeam, enemyTeam)){
+                        System.exit(0);
+                    }
                 }
-            }
+            
+             }
             if(playerTeam.size()==2){
                 System.out.println("\nIt's your turn! \nChoose a Character to make a move with: \n1. " +  playerTeam.get(0).name + "\n2. " + playerTeam.get(1).name);
             }
@@ -163,7 +166,7 @@ public class App {
             }
             
             
-            deathCheck.checkForDeaths(playerTeam, enemyTeam, currentEnemy);
+            if (deathCheck.checkForDeaths(playerTeam, enemyTeam)){System.exit(0);}
 
             // ENEMY TURN ---------------------------------------------------------------------------------------------------------------------------------------------------------------
             System.out.println("\nIt is " + currentEnemy.name + "'s turn!");
@@ -191,8 +194,8 @@ public class App {
                     actions.heal(currentEnemy);
                 }
             }
-
-            deathCheck.checkForDeaths(playerTeam, enemyTeam, currentEnemy);
+            
+            if (deathCheck.checkForDeaths(playerTeam, enemyTeam)){System.exit(0);}
         }
     }
 }

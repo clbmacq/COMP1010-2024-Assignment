@@ -11,13 +11,13 @@ public class userInput {
                 return input;
             }
             else {
-                System.out.println("Invalid input. Please enter an integer.");
+                System.out.println("Invalid input. Please enter an a Number between 1 -" + bound) ;
                 scanner.next(); // clear the invalid input
                 return requestInt(bound); // call the method recursively
             }
         }
         else {
-            System.out.println("Invalid input. Please enter an integer.");
+            System.out.println("Invalid input. Please enter an a Number between 1 - " + bound);
             scanner.next(); // clear the invalid input
             return requestInt(bound); // call the method recursively
         }
