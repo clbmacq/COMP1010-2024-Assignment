@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "App",
+            "request": "launch",
+            "mainClass": "App",
+            "projectName": "COMP1010-2024-Assignment_de0eae9f"
+        },
+        {
+            "type": "java",
             "name": "ActionsTest",
             "request": "launch",
             "mainClass": "main.ActionsTest",
