@@ -16,7 +16,7 @@ public class ActionsTest {
 
         actions.heal(target);
 
-        // Check that health has increased and does not exceed max health
+        // Check that health has increased or stayed the same and does not exceed max health
         assertTrue(target.health >= initialHealth && target.health <= target.maxhp);
     }
 
@@ -76,6 +76,23 @@ public class ActionsTest {
         assertTrue(target.health < initialHealth);
     }
 
+    @Test
+    public void testAttackUnsuccessful() {
+        // Set up the attacker's equipment and stats
+        ArrayList<equipment> attackerGear = new ArrayList<>();
+        attackerGear.add(new equipment("Sword", "Wooden Sword", 5));
+        character attacker = new character("Warrior", 15, 20, 12, 10, "Friendly", attackerGear);
     
+        // Set up the target with a high defense to simulate an unsuccessful attack
+        ArrayList<equipment> targetGear = new ArrayList<>();
+        targetGear.add(new equipment("Shield", "Wooden Shield", 3));
+        character target = new character("Mage", 10, 10, 20, 30, "Enemy", targetGear); // High defense
+    
+        int initialHealth = target.health;
+        actions.attack(attacker, target);
+    
+        // Verify the target's health remains the same, indicating no damage was dealt
+        assertEquals(initialHealth, target.health);
+        }
 }
 
