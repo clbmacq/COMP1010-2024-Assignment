@@ -202,7 +202,7 @@ public class App {
                 }
             }
             
-            if (deathCheck.checkForDeaths(playerTeam, enemyTeam)){System.exit(0);}
+            if (deathCheck.checkForDeaths(playerTeam, enemyTeam)){scanny.close(); System.exit(0);}
             roundCount++;
         }
     }
