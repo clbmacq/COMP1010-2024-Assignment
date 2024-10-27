@@ -48,6 +48,7 @@ public class App {
                 "\n4. Mimo" + character.getInfo(Mimo) + 
         " \nEnter the number corresponding to your choice: ");
         int choice = userInput.requestInt(4);
+        System.out.println("---------------------------------------------------------------------------------");
         switch (choice) {
             case 1 -> {
                 Bob.team = "Player";
@@ -106,6 +107,7 @@ public class App {
 
         System.out.println("\nDo you wish to accept the battle? (yes/no)");
         String acceptBattle = scanny.next();
+        System.out.println("---------------------------------------------------------------------------------|");
 
         if (acceptBattle.equals("yes")) {
             System.out.println("You have accepted the battle! Let the fight begin!");
@@ -116,9 +118,10 @@ public class App {
         // ------------------------- mid round variables----------------------------
         character currentEnemy = enemyTeam.get(rand.nextInt(enemyTeam.size())); 
         System.out.println("A Wild Enemy has Appeared: " +  currentEnemy.name);
-
+        int roundCount = 1;
         // ------------------------Game start - rounds----------------------------
         while (true){
+            System.out.println("----------------------------------Round:"+ roundCount + "----------------------------------------|");
             for(int player = 0; player < playerTeam.size();player++){
                 if(playerTeam.get(player).health<=0){
                     System.out.println(playerTeam.get(player).name + " is dead ");
@@ -137,9 +140,11 @@ public class App {
             }
             // PLAYER TURN------------------------------------------------------------------------------------------------------------------------------
             int playerChoice = userInput.requestInt(playerTeam.size());
+            System.out.println("---------------------------------------------------------------------------------|");
             if (playerChoice == 1){ 
                 System.out.println("\n What would you like " + playerTeam.get(0).name + " to do? \n1. Attack \n2. Heal");
                 playerChoice = userInput.requestInt(2);
+                System.out.println("---------------------------------------------------------------------------------|");
                 if (playerChoice == 1){
                     actions.attack(playerTeam.get(0), currentEnemy);
                 } else if (playerChoice == 2){
@@ -149,6 +154,7 @@ public class App {
             else if (playerChoice == 2){ 
                 System.out.println("\nWhat would you like " + playerTeam.get(1).name + " to do? \n1. Attack \n2. Heal");
                 playerChoice = userInput.requestInt(2);
+                System.out.println("---------------------------------------------------------------------------------|");
                 if (playerChoice == 1){
                     actions.attack(playerTeam.get(1), currentEnemy);
                 } else if (playerChoice == 2){
@@ -197,6 +203,7 @@ public class App {
             }
             
             if (deathCheck.checkForDeaths(playerTeam, enemyTeam)){System.exit(0);}
+            roundCount++;
         }
     }
 }

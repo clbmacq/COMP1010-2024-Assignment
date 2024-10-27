@@ -23,29 +23,3 @@ public class userInput {
         return requestInt(bound);
     }
 }
-
-// import java.util.Scanner;
-
-// public class userInput {
-
-//     private static final Scanner scanner = new Scanner(System.in); // Single instance
-
-//     public static int requestInt(int bound) {
-//         int input;
-
-//         while (true) {
-//             System.out.print("Enter a number between 1 and " + bound + ": ");
-//             if (scanner.hasNextInt()) {
-//                 input = scanner.nextInt();
-//                 if (input > 0 && input <= bound) {
-//                     return input; // valid input; exit the method
-//                 } else {
-//                     System.out.println("Invalid input. Please enter a number between 1 - " + bound);
-//                 }
-//             } else {
-//                 System.out.println("Invalid input. Please enter a number between 1 - " + bound);
-//                 scanner.next(); // Clear the invalid input
-//             }
-//         }
-//     }
-// }
