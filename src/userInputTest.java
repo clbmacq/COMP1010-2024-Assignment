@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 // (DISCLAIMER) the below methods must be run one at a time, rather than running the whole class
-public class userInputTest {
+public class UserInputTest {
     private final InputStream originalSystemIn = System.in;
 
     @AfterEach
@@ -21,7 +21,7 @@ public class userInputTest {
         // Simulate user input "3"
         String simulatedInput = "3\n";
         System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
-        int result = userInput.requestInt(5);
+        int result = UserInput.requestInt(5);
         assertEquals(3, result);
     }
 
@@ -30,7 +30,7 @@ public class userInputTest {
         // Simulate user input "abc", then "4"
         String simulatedInput = "abc\n4\n";
         System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
-        int result = userInput.requestInt(5);
+        int result = UserInput.requestInt(5);
         assertEquals(4, result);
     }
 
@@ -39,7 +39,7 @@ public class userInputTest {
         // Simulate user input "7", then "3"
         String simulatedInput = "7\n3\n";
         System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
-        int result = userInput.requestInt(5);
+        int result = UserInput.requestInt(5);
         assertEquals(3, result);
     }
 }

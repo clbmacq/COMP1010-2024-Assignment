@@ -7,13 +7,13 @@ public class ActionsTest {
 
     @Test
     public void testHeal() {
-        ArrayList<equipment> equipmentList = new ArrayList<>();
-        character target = new character("healer", 10, 10, 10, 10, "Enemy", equipmentList);
+        ArrayList<Equipment> EquipmentList = new ArrayList<>();
+        GameCharacter target = new GameCharacter("healer", 10, 10, 10, 10, "Enemy", EquipmentList);
 
         target.health = 5; // Initial health
         int initialHealth = target.health;
 
-        actions.heal(target);
+        Actions.heal(target);
 
         // Check that health has increased or stayed the same and does not exceed max health
         assertTrue(target.health >= initialHealth && target.health <= target.maxHP);
@@ -21,11 +21,11 @@ public class ActionsTest {
 
     @Test
     public void testHealOverMaxHealth() {
-        ArrayList<equipment> equipmentList = new ArrayList<>();
-        character target = new character("healer", 10, 10, 10, 10, "Enemy", equipmentList);
+        ArrayList<Equipment> EquipmentList = new ArrayList<>();
+        GameCharacter target = new GameCharacter("healer", 10, 10, 10, 10, "Enemy", EquipmentList);
 
         target.health = 8; // Initial health
-        actions.heal(target); // Heal the character
+        Actions.heal(target); // Heal the character
 
         // Check that health does not exceed max health
         assertEquals(target.maxHP, target.health);
@@ -33,11 +33,11 @@ public class ActionsTest {
 
     @Test
     public void testHealAtMaxHealth() {
-        ArrayList<equipment> equipmentList = new ArrayList<>();
-        character target = new character("healer", 10, 10, 10, 10, "Enemy", equipmentList);
+        ArrayList<Equipment> EquipmentList = new ArrayList<>();
+        GameCharacter target = new GameCharacter("healer", 10, 10, 10, 10, "Enemy", EquipmentList);
 
         target.health = 10; // Max health
-        actions.heal(target); // Attempt to heal
+        Actions.heal(target); // Attempt to heal
 
         // Health should remain the same
         assertEquals(10, target.health);
@@ -45,13 +45,12 @@ public class ActionsTest {
 
     @Test
     public void testHealDoesNotExceedMaxHealth() {
-        ArrayList<equipment> equipmentList = new ArrayList<>();
-        character target = new character("healer", 10, 10, 10, 10, "Enemy", equipmentList);
+        ArrayList<Equipment> EquipmentList = new ArrayList<>();
+        GameCharacter target = new GameCharacter("healer", 10, 10, 10, 10, "Enemy", EquipmentList);
 
-        target.health = 7; // Initial health
-        target.maxHP = 10; // Set max health
+        target.health = 7; // drop health to make room for heal
 
-        actions.heal(target); // Heal the character
+        Actions.heal(target); // Heal the character
 
         // Health should not exceed max health
         assertTrue(target.health <= target.maxHP);
@@ -60,38 +59,39 @@ public class ActionsTest {
 
     @Test
     public void testAttackSuccess() {
-        ArrayList<equipment> attackerGear = new ArrayList<>();
-        attackerGear.add(new equipment("Sword"," Wooden Sword", 5)); // Assuming Equipment constructor takes name and statModifier
-        character attacker = new character("Warrior", 15, 20, 12, 10, "Friendly", attackerGear);
-
-        ArrayList<equipment> targetGear = new ArrayList<>();
-        targetGear.add(new equipment("Shield", "Wooden Shield", 3));
-        character target = new character("Mage", 10, 10, 10, 10, "Enemy", targetGear);
+        // Set up the attacker's Equipment and stats
+        ArrayList<Equipment> attackerGear = new ArrayList<>();
+        attackerGear.add(new Equipment("Weapon", "Sword", 5));
+        GameCharacter attacker = new GameCharacter("Timmy", 15, 20, 12, 10, "Player", attackerGear);
+        // Set up the target with a low defense to simulate a successful attack
+        ArrayList<Equipment> targetGear = new ArrayList<>();
+        targetGear.add(new Equipment("Weapon", "Stick", 3));
+        GameCharacter target = new GameCharacter("James", 10, 10, 20, 0, "Enemy", targetGear);
 
         int initialHealth = target.health;
-        actions.attack(attacker, target);
+        Actions.attack(attacker, target);
 
-        // Ensure target's health has decreased
+        // check to make sure target's health has decreased
         assertTrue(target.health < initialHealth);
     }
 
     @Test
     public void testAttackUnsuccessful() {
-        // Set up the attacker's equipment and stats
-        ArrayList<equipment> attackerGear = new ArrayList<>();
-        attackerGear.add(new equipment("Sword", "Wooden Sword", 5));
-        character attacker = new character("Warrior", 15, 20, 12, 10, "Friendly", attackerGear);
+        // Set up the attacker's Equipment and stats
+        ArrayList<Equipment> attackerGear = new ArrayList<>();
+        attackerGear.add(new Equipment("Weapon", "Sword", 5));
+        GameCharacter attacker = new GameCharacter("Timmy", 15, 20, 12, 10, "Player", attackerGear);
     
         // Set up the target with a high defense to simulate an unsuccessful attack
-        ArrayList<equipment> targetGear = new ArrayList<>();
-        targetGear.add(new equipment("Shield", "Wooden Shield", 3));
-        character target = new character("Mage", 10, 10, 20, 30, "Enemy", targetGear); // High defense
+        ArrayList<Equipment> targetGear = new ArrayList<>();
+        targetGear.add(new Equipment("Weapon", "Stick", 3));
+        GameCharacter target = new GameCharacter("James", 10, 10, 20, 30, "Enemy", targetGear); // High defense
     
         int initialHealth = target.health;
-        actions.attack(attacker, target);
+        Actions.attack(attacker, target);
     
         // Verify the target's health remains the same, indicating no damage was dealt
         assertEquals(initialHealth, target.health);
-        }
+    }
 }
 

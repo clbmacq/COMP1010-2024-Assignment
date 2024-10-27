@@ -1,11 +1,10 @@
-
 import java.util.Random;
 
-public class actions {
-    public static void attack(character attacker, character target) {
+public class Actions {
+    public static void attack(GameCharacter attacker, GameCharacter target) {
         //creating random object
         Random rand = new Random();
-        equipment attackerWeapon = attacker.gear.get(0);
+        Equipment attackerWeapon = attacker.gear.get(0);
         int roll = rand.nextInt(20) + 1; // generate number from 1 - 20
         
         if (roll >= target.defense) {
@@ -24,7 +23,7 @@ public class actions {
         }
     }
     
-    public static void heal(character target) {
+    public static void heal(GameCharacter target) {
         Random rand = new Random();
         int preHealth = target.health;
 

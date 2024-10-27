@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class userInput {
+public class UserInput {
 
     private static final Scanner SCANNER = new Scanner(System.in); // Single instance
 

@@ -1,7 +1,7 @@
 
 import java.util.ArrayList;
-public class deathCheck {
-    public static boolean checkForDeaths(ArrayList<character> playerTeam, ArrayList<character> enemyTeam) {
+public class DeathCheck {
+    public static boolean checkForDeaths(ArrayList<GameCharacter> playerTeam, ArrayList<GameCharacter> enemyTeam) {
         if (playerTeam.isEmpty()) {
             System.out.println("\nGame Over, You lost");
             return true;

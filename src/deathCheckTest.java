@@ -1,47 +1,48 @@
-import org.junit.Test;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
 import java.util.ArrayList;
 
-public class deathCheckTest {
+import org.junit.jupiter.api.Test;
+
+public class DeathCheckTest {
 
     @Test
     public void testPlayerTeamEmpty() {
         // Create an empty player team
-        ArrayList<character> playerTeam = new ArrayList<>();
-        ArrayList<character> enemyTeam = new ArrayList<>();
-        enemyTeam.add(new character("Enemy1", 10, 10, 10, 10, "Enemy", new ArrayList<>()));
+        ArrayList<GameCharacter> playerTeam = new ArrayList<>();
+        ArrayList<GameCharacter> enemyTeam = new ArrayList<>();
+        enemyTeam.add(new GameCharacter("Enemy1", 10, 10, 10, 10, "Enemy", new ArrayList<Equipment>()));
 
         // Capture the System.exit call
-        deathCheck.checkForDeaths(playerTeam, enemyTeam);
+        DeathCheck.checkForDeaths(playerTeam, enemyTeam);
         assertTrue("Expected to call System.exit", true);
     }
 
     @Test
     public void testEnemyTeamEmpty() {
         // Create an empty enemy team
-        ArrayList<character> enemyTeam = new ArrayList<>();
+        ArrayList<GameCharacter> enemyTeam = new ArrayList<>();
         // create player team with at least one character
-        ArrayList<character> playerTeam = new ArrayList<>();
-        ArrayList<equipment> gearbob = new ArrayList<>();
-        equipment WepLongsword = new equipment("Weapon", "LongSword", 10);
-        character Bob = new character("Bob", 30, 30, 30, 7, "Enemy", gearbob);
+        ArrayList<GameCharacter> playerTeam = new ArrayList<>();
+        ArrayList<Equipment> gearbob = new ArrayList<>();
+        Equipment WepLongsword = new Equipment("Weapon", "LongSword", 10);
+        GameCharacter Bob = new GameCharacter("Bob", 30, 30, 30, 7, "Enemy", gearbob);
         gearbob.add(WepLongsword);
         playerTeam.add(Bob);
 
         // Check for deaths and expect true when enemy team is empty
-        deathCheck.checkForDeaths(playerTeam, enemyTeam);
-        assertTrue(deathCheck.checkForDeaths(playerTeam, enemyTeam));
+        DeathCheck.checkForDeaths(playerTeam, enemyTeam);
+        assertTrue(DeathCheck.checkForDeaths(playerTeam, enemyTeam));
     
    }
    @Test
    public void testNotEmpty() {
         // Create an empty player team
-        ArrayList<character> playerTeam = new ArrayList<>();
-        ArrayList<character> enemyTeam = new ArrayList<>();
-        enemyTeam.add(new character("Enemy1", 10, 10, 10, 10, "Enemy", new ArrayList<>()));
-        playerTeam.add(new character("Player1", 10, 10, 10, 10, "Enemy", new ArrayList<>()));
-        assertFalse(deathCheck.checkForDeaths(playerTeam, enemyTeam));
+        ArrayList<GameCharacter> playerTeam = new ArrayList<>();
+        ArrayList<GameCharacter> enemyTeam = new ArrayList<>();
+        enemyTeam.add(new GameCharacter("Enemy1", 10, 10, 10, 10, "Enemy", new ArrayList<>()));
+        playerTeam.add(new GameCharacter("Player1", 10, 10, 10, 10, "Enemy", new ArrayList<>()));
+        assertFalse(DeathCheck.checkForDeaths(playerTeam, enemyTeam));
     }
 }   
    
