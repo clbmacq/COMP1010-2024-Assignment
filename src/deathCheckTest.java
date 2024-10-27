@@ -23,16 +23,14 @@ public class deathCheckTest {
     @Test
     public void testEnemyTeamEmpty() {
         // Create an empty enemy team
-        ArrayList<character> playerTeam = new ArrayList<>();
         ArrayList<character> enemyTeam = new ArrayList<>();
-
-        
+        // create player team with at least one character
+        ArrayList<character> playerTeam = new ArrayList<>();
         ArrayList<equipment> gearbob = new ArrayList<>();
-
+        equipment WepLongsword = new equipment("Weapon", "LongSword", 10);
         character Bob = new character("Bob", 30, 30, 30, 7, "Enemy", gearbob);
         gearbob.add(WepLongsword);
-        
-        playerTeam.add();
+        playerTeam.add(Bob);
 
         // Check for deaths and expect true when enemy team is empty
         deathCheck.checkForDeaths(playerTeam, enemyTeam);
@@ -46,7 +44,7 @@ public class deathCheckTest {
         ArrayList<character> enemyTeam = new ArrayList<>();
         enemyTeam.add(new character("Enemy1", 10, 10, 10, 10, "Enemy", new ArrayList<>()));
         playerTeam.add(new character("Player1", 10, 10, 10, 10, "Enemy", new ArrayList<>()));
-        deathCheck.checkForDeaths(playerTeam, enemyTeam);
+        assertFalse(deathCheck.checkForDeaths(playerTeam, enemyTeam));
     }
 }   
    

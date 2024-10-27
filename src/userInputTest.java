@@ -10,12 +10,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class userInputTest {
+    // the below methods must be run one at a time, rather than running the whole class
     private final InputStream originalSystemIn = System.in;
-
-    @BeforeEach
-    public void setUp() {
-        // Set up before each test if needed
-    }
 
     @AfterEach
     public void restoreSystemInStream() {

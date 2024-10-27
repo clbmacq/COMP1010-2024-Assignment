@@ -21,28 +21,28 @@ public class character {
         this.gear = gear; // equipped weapon
     }
 
-    public void getName(character x){
-        System.out.println(x.name + "'s Name is: " + x.name);
+    public String getName(character x){
+        return(x.name + "'s Name is: " + x.name);
     }
 
-    public void getHealth(character x){
-        System.out.println(x.name + "'s Health is: " + x.health);
+    public String getHealth(character x){
+        return(x.name + "'s Health is: " + x.health);
     }
     
-    public void getStrength(character x){
-        System.out.println(x.name + "'s Strength is: " + x.strength);
+    public String getStrength(character x){
+        return(x.name + "'s Strength is: " + x.strength);
     }
 
-    public void getDefense(character x){
-        System.out.println(x.name + "'s Defense is: " + x.defense);
+    public String getDefense(character x){
+        return(x.name + "'s Defense is: " + x.defense);
     }
 
-    public void getTeam(character x){
-        System.out.println(x.name + "'s Team is: " + x.team);
+    public String getTeam(character x){
+        return x.name + "'s Team is: " + x.team;
     }
 
-    public void getWeapon(character x){
-            System.out.println(x.name + "'s equipped weapon is: " + x.gear.get(0).name);
+    public String getWeapon(character x){
+        return(x.name + "'s equipped weapon is: " + x.gear.get(0).name);
     }
     
     public static String getInfo(character x) {
