@@ -16,7 +16,7 @@ public class ActionsTest {
         actions.heal(target);
 
         // Check that health has increased or stayed the same and does not exceed max health
-        assertTrue(target.health >= initialHealth && target.health <= target.maxhp);
+        assertTrue(target.health >= initialHealth && target.health <= target.maxHP);
     }
 
     @Test
@@ -28,7 +28,7 @@ public class ActionsTest {
         actions.heal(target); // Heal the character
 
         // Check that health does not exceed max health
-        assertEquals(target.maxhp, target.health);
+        assertEquals(target.maxHP, target.health);
     }
 
     @Test
@@ -49,12 +49,12 @@ public class ActionsTest {
         character target = new character("healer", 10, 10, 10, 10, "Enemy", equipmentList);
 
         target.health = 7; // Initial health
-        target.maxhp = 10; // Set max health
+        target.maxHP = 10; // Set max health
 
         actions.heal(target); // Heal the character
 
         // Health should not exceed max health
-        assertTrue(target.health <= target.maxhp);
+        assertTrue(target.health <= target.maxHP);
     }
 
 

@@ -7,14 +7,14 @@ public class character {
     public int strength;
     public int defense;
     public String team; 
-    public int maxhp;
+    public int maxHP;
     public ArrayList<equipment> gear = new ArrayList<>();
     
 // ----- Playable Character ----- //
-    public character(String name, int health, int maxhp, int strength, int defense, String team, ArrayList<equipment> gear){
+    public character(String name, int health, int maxHP, int strength, int defense, String team, ArrayList<equipment> gear) {
         this.name = name; // name
         this.health = health; // current hitpoints
-        this.maxhp = maxhp; // max hitpoints
+        this.maxHP = maxHP; // max hitpoints
         this.strength = strength; // determines damage
         this.defense = defense; // determines chance of being hit
         this.team = team; // enemy or player team

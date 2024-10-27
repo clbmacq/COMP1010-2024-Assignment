@@ -2,39 +2,36 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-
-
-
 public class App {
     public static void main(String[] args) throws Exception {
         Random rand = new Random();
 
         // weapons list
-        equipment WepLongsword = new equipment("Weapon", "LongSword", 10);
-        equipment WepShortsword= new equipment("Weapon", "Shortsword", 10);
-        equipment WepMachete = new equipment("Weapon", "Machete", 10);
-        equipment WepDagger = new equipment("Weapon", "Dagger", 10);
+        equipment longsword = new equipment("Weapon", "Longsword", 10);
+        equipment shortsword= new equipment("Weapon", "Shortsword", 10);
+        equipment machete = new equipment("Weapon", "Machete", 10);
+        equipment dagger = new equipment("Weapon", "Dagger", 10);
         
-        ArrayList<equipment> gearbob = new ArrayList<>();
-        ArrayList<equipment> gearcaleb = new ArrayList<>();
-        ArrayList<equipment> gearjayden = new ArrayList<>();
-        ArrayList<equipment> gearmimo = new ArrayList<>();
-        ArrayList<equipment> geargram = new ArrayList<>();
+        ArrayList<equipment> gearBob = new ArrayList<>();
+        ArrayList<equipment> gearCaleb = new ArrayList<>();
+        ArrayList<equipment> gearJayden = new ArrayList<>();
+        ArrayList<equipment> gearMimo = new ArrayList<>();
+        ArrayList<equipment> gearGram = new ArrayList<>();
 
-        character Bob = new character("Bob", 30, 30, 30, 7, "Enemy", gearbob);
-        gearbob.add(WepLongsword);
+        character Bob = new character("Bob", 30, 30, 30, 7, "Enemy", gearBob);
+        gearBob.add(longsword);
     
-        character Caleb = new character("Caleb", 45, 40, 20, 7, "Enemy", gearcaleb);
-        gearcaleb.add(WepShortsword);
+        character Caleb = new character("Caleb", 45, 40, 20, 7, "Enemy", gearCaleb);
+        gearCaleb.add(shortsword);
 
-        character Jayden = new character("Jayden", 40, 40 , 25, 7, "Enemy", gearjayden);
-        gearjayden.add(WepMachete);
+        character Jayden = new character("Jayden", 40, 40 , 25, 7, "Enemy", gearJayden);
+        gearJayden.add(machete);
 
-        character Mimo = new character("Mimo", 35, 35, 25, 7, "Enemy",gearmimo);
-        gearmimo.add(WepDagger);
+        character Mimo = new character("Mimo", 35, 35, 25, 7, "Enemy",gearMimo);
+        gearMimo.add(dagger);
         
-        character Gram = new character("Gram", 40, 40, 40, 7, "Default Player",geargram);
-        geargram.add(WepLongsword);
+        character Gram = new character("Gram", 40, 40, 40, 7, "Default Player",gearGram);
+        gearGram.add(longsword);
         
         ArrayList<character> playerTeam = new ArrayList<>();
         ArrayList<character> enemyTeam = new ArrayList<>();
@@ -80,21 +77,21 @@ public class App {
         playerTeam.add(Gram);
 
         System.out.println("\nYour team:");
-        for(character member: playerTeam){
+        for(character member: playerTeam) {
             System.out.println(member.name);
         }
 
         //Adding remaining characters to enemy team
-        if (!playerTeam.contains(Bob)){
+        if (!playerTeam.contains(Bob)) {
             enemyTeam.add(Bob);
         }
-        if (!playerTeam.contains(Caleb)){
+        if (!playerTeam.contains(Caleb)) {
             enemyTeam.add(Caleb);
         }
         if (!playerTeam.contains(Jayden)) {
             enemyTeam.add(Jayden);
         }
-        if (!playerTeam.contains(Mimo)){
+        if (!playerTeam.contains(Mimo)) {
             enemyTeam.add(Mimo);
         }
 
@@ -120,44 +117,45 @@ public class App {
         System.out.println("A Wild Enemy has Appeared: " +  currentEnemy.name);
         int roundCount = 1;
         // ------------------------Game start - rounds----------------------------
-        while (true){
+        while (true) {
             System.out.println("----------------------------------Round:"+ roundCount + "----------------------------------------|");
-            for(int player = 0; player < playerTeam.size();player++){
-                if(playerTeam.get(player).health<=0){
+            for(int player = 0; player < playerTeam.size();player++) {
+                if(playerTeam.get(player).health<=0) {
                     System.out.println(playerTeam.get(player).name + " is dead ");
                     playerTeam.remove(player);
-                    if (deathCheck.checkForDeaths(playerTeam, enemyTeam)){
+                    if (deathCheck.checkForDeaths(playerTeam, enemyTeam)) {
                         System.exit(0);
                     }
                 }
-            
-             }
-            if(playerTeam.size()==2){
-                System.out.println("\nIt's your turn! \nChoose a Character to make a move with: \n1. " +  playerTeam.get(0).name + "\n2. " + playerTeam.get(1).name);
             }
+            if(playerTeam.size()==2) {
+                System.out.println("\nIt's your turn! \nChoose a Character to make a move with: \n1. " +  playerTeam.get(0).name + "\n2. " + playerTeam.get(1).name);
+            } 
             else {
                 System.out.println("\nIt's your turn! \nChoose a Character to make a move with: \n1. " +  playerTeam.get(0).name);
             }
             // PLAYER TURN------------------------------------------------------------------------------------------------------------------------------
             int playerChoice = userInput.requestInt(playerTeam.size());
             System.out.println("---------------------------------------------------------------------------------|");
-            if (playerChoice == 1){ 
+            if (playerChoice == 1) { 
                 System.out.println("\n What would you like " + playerTeam.get(0).name + " to do? \n1. Attack \n2. Heal");
                 playerChoice = userInput.requestInt(2);
                 System.out.println("---------------------------------------------------------------------------------|");
-                if (playerChoice == 1){
+                if (playerChoice == 1) {
                     actions.attack(playerTeam.get(0), currentEnemy);
-                } else if (playerChoice == 2){
-                        actions.heal(playerTeam.get(0));
+                } 
+                else if (playerChoice == 2) {
+                    actions.heal(playerTeam.get(0));
                 }
             }
-            else if (playerChoice == 2){ 
+            else if (playerChoice == 2) { 
                 System.out.println("\nWhat would you like " + playerTeam.get(1).name + " to do? \n1. Attack \n2. Heal");
                 playerChoice = userInput.requestInt(2);
                 System.out.println("---------------------------------------------------------------------------------|");
-                if (playerChoice == 1){
+                if (playerChoice == 1) {
                     actions.attack(playerTeam.get(1), currentEnemy);
-                } else if (playerChoice == 2){
+                } 
+                else if (playerChoice == 2) {
                     actions.heal(playerTeam.get(1));
             
                 }
@@ -165,44 +163,51 @@ public class App {
             if (currentEnemy.health <= 0) {
                 enemyTeam.remove(currentEnemy);
                 System.out.println("Enemies Remaining: ");
-                for (character x : enemyTeam) {System.out.println("   " + x.name);}
-                if (!enemyTeam.isEmpty()){
+                for (character x : enemyTeam) {
+                    System.out.println("   " + x.name);
+                }
+                if (!enemyTeam.isEmpty()) {
                 currentEnemy = enemyTeam.get(rand.nextInt((enemyTeam.size())));
                 }
             }
             
             
-            if (deathCheck.checkForDeaths(playerTeam, enemyTeam)){System.exit(0);}
+            if (deathCheck.checkForDeaths(playerTeam, enemyTeam)) { // check whether either team is completely dead after turn
+                scanny.close(); 
+                System.exit(0);
+            }
 
             // ENEMY TURN ---------------------------------------------------------------------------------------------------------------------------------------------------------------
             System.out.println("\nIt is " + currentEnemy.name + "'s turn!");
             character targetPC = playerTeam.get(rand.nextInt(playerTeam.size()));
             
             // 
-            if (currentEnemy.health == currentEnemy.maxhp) {
+            if (currentEnemy.health == currentEnemy.maxHP) {
                 actions.attack(currentEnemy, targetPC);
             }
 
-            else if (currentEnemy.health > (currentEnemy.maxhp/2) && currentEnemy.health < currentEnemy.maxhp) { // 50% to heal
+            else if (currentEnemy.health > (currentEnemy.maxHP/2) && currentEnemy.health < currentEnemy.maxHP) { // 50% to heal
             int chance = rand.nextInt(2);
-            if (chance == 0){
+            if (chance == 0) {
                 actions.attack(currentEnemy, targetPC);
             }
             else if (chance == 1) {
                 actions.heal(currentEnemy);
                 }
             }
-            else if (currentEnemy.health < (currentEnemy.maxhp/2)){ // 66.6 % to heal
+            else if (currentEnemy.health < (currentEnemy.maxHP/2)) { // 66.6 % to heal
                 int chance = rand.nextInt(3);
-                if (chance == 0){
+                if (chance == 0) {
                     actions.attack(currentEnemy, targetPC);
                 }
-                else if (chance == 1 || chance == 2){
+                else if (chance == 1 || chance == 2) {
                     actions.heal(currentEnemy);
                 }
             }
-            
-            if (deathCheck.checkForDeaths(playerTeam, enemyTeam)){scanny.close(); System.exit(0);}
+            if (deathCheck.checkForDeaths(playerTeam, enemyTeam)) {
+                scanny.close(); 
+                System.exit(0);
+            }
             roundCount++;
         }
     }

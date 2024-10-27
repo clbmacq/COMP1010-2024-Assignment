@@ -18,7 +18,7 @@ Step 3: Launch Visual Studio Code
 Open Visual Studio Code on your computer. If you don't have it installed, download it from the official website and follow the installation instructions.
 
 Step 4: Open the folder in VSCode 
-You can do this by clicking File> Open Folder> Downloads> the unzipped version of the folder>Select Folder
+You can do this by clicking File> Open Folder> Downloads> the unzipped version of the folder> Select Folder
 
 Step 5: Access the .SRC Code Directory
 Once the folder is open in Visual Studio Code, look for the directory labeled ".SRC Code." Click on it to reveal a dropdown list of files contained within.
@@ -32,7 +32,7 @@ Before running the code, ensure that your Java Development Kit (JDK) is properly
 Step 8: Run App.java
 To run the code, you can either:
 - Click the triangle play button in the top right corner of the editor, or
-Open the terminal in Visual Studio Code (by selecting “Terminal” > “New Terminal” from the menu) and type "java App.java" (without quotes), and then hit Enter.
+- Open the terminal in Visual Studio Code (by selecting “Terminal” > “New Terminal” from the menu) and type "java App.java" (without quotes), and then hit Enter.
 
 
 

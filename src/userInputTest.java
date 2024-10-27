@@ -1,11 +1,12 @@
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
-
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+
+
+// (DISCLAIMER) the below methods must be run one at a time, rather than running the whole class
 public class userInputTest {
     private final InputStream originalSystemIn = System.in;
 
