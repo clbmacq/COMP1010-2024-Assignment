@@ -12,7 +12,7 @@ public class characterTest {
     @Before
     public void setUp() {
         // Initialize the equipment for testing
-        testGear = new ArrayList<>();
+        testGear = new ArrayList<equipment>();
         equipment WepDagger = new equipment("Weapon", "Dagger", 10);
 
         testGear.add(WepDagger);
@@ -20,7 +20,7 @@ public class characterTest {
         // Initialize the character for testing
         testCharacter = new character("Hero", 100, 100, 15, 10, "Player", testGear);
     }
-    
+
     @Test
     public void testGetInfo() {
         // Capture the output

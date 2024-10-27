@@ -20,7 +20,7 @@ public class character {
         this.team = team; // enemy or player team
         this.gear = gear; // equipped weapon
     }
-
+   
     public static String getInfo(character x) {
         return (    " (Health: " + x.health + " Strength: " + x.strength + " Defense: " + x.defense + " Weapon: " + x.gear.get(0).name + ")");
     }

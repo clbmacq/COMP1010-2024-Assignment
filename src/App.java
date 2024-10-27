@@ -171,7 +171,8 @@ public class App {
             // ENEMY TURN ---------------------------------------------------------------------------------------------------------------------------------------------------------------
             System.out.println("\nIt is " + currentEnemy.name + "'s turn!");
             character targetPC = playerTeam.get(rand.nextInt(playerTeam.size()));
-
+            
+            // 
             if (currentEnemy.health == currentEnemy.maxhp) {
                 actions.attack(currentEnemy, targetPC);
             }
